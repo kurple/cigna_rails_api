@@ -5,12 +5,12 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
 
-    render json: @students
+    render json: @students, include: { courses: { include: :students } }
   end
 
   # GET /students/1
   def show
-    render json: @student
+    render json: @student, include: { courses: { include: :students } }
   end
 
   # POST /students
